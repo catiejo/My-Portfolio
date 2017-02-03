@@ -1,0 +1,1 @@
+{ "entrypoint": "index.html", "shell": "src/my-app.html", "fragments": [ "src/method-card.html", "src/method-page.html", "src/methods-app.html" ] }

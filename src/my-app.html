@@ -1,0 +1,103 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animatable.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
+<link rel="import" href="../bower_components/neon-animation/neon-animations.html">
+<link rel="import" href="../bower_components/paper-styles/color.html">
+<link rel="import" href="../bower_components/paper-styles/typography.html">
+<link rel="import" href="edit-method-page.html">
+<link rel="import" href="methods-app.html">
+<link rel="import" href="method-page.html">
+
+<dom-module id="my-app">
+  <template>
+    <style is="custom-style">
+      methods-app, method-page {
+        height: 100%;
+        width: 100%;
+      }
+      neon-animated-pages {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+    <!-- Database Declaration -->
+    <firebase-app 
+      name="methods"
+      auth-domain="gkl-methods.firebaseapp.com" 
+      database-url="https://gkl-methods.firebaseio.com/" 
+      api-key="AIzaSyA2IcaKsboeYiUMilM4FxU4-PA6fAnSLNo">
+    </firebase-app>
+    <firebase-auth id="auth" app-name="methods">
+    </firebase-auth>
+    <!-- Page Controller -->
+    <neon-animated-pages selected="[[currentPage]]" entry-animation="[[screenEntryAnimation]]" exit-animation="[[screenExitAnimation]]">
+      <neon-animatable><methods-app on-add-method='editMethod' on-method-clicked='methodClicked'></methods-app></neon-animatable>
+      <neon-animatable><method-page on-edit-method='editMethod' on-go-back='goHome' method-id="{{methodId}}"></method-page></neon-animatable>
+      <neon-animatable><edit-method-page method-id="{{methodId}}" on-method-clicked='methodClicked' on-go-back='cancelChanges'></edit-method-page></neon-animatable>
+    </neon-animated-pages>
+  </template>
+  <script>
+    Polymer({
+      is: 'my-app',
+      properties: {
+        currentPage: {
+          type: Number,
+          value: 0, 
+        },
+        methodId: {
+          type: String,
+          value: "new",
+        },
+        screenEntryAnimation: String,
+        screenExitAnimation: String,
+      },
+      cancelChanges: function(e) {
+        this.screenEntryAnimation = 'slide-from-left-animation';
+        this.screenExitAnimation = 'slide-right-animation';
+        if (e.detail.isNewMethod) {
+          this.goHome();
+        } else {
+          location.hash = this.methodId;
+          this.currentPage = 1;
+        }
+      },
+      editMethod: function(e) {
+        this.screenEntryAnimation = 'slide-from-right-animation';
+        this.screenExitAnimation = 'slide-left-animation';
+        if (e.detail.action === 'add') {
+          this.methodId = "new";
+        }
+        location.hash = this.methodId;
+        this.currentPage = 2;
+      },
+      goHome: function(e) {
+        console.log("Going back to gkl-methods.");
+        this.screenEntryAnimation = 'slide-from-left-animation';
+        this.screenExitAnimation = 'slide-right-animation';
+        location.hash = "home";
+        this.currentPage = 0;
+      },
+      goToPage: function() {
+        this.screenEntryAnimation = 'slide-from-right-animation';
+        this.screenExitAnimation = 'slide-left-animation';
+        location.hash = this.methodId;
+        this.currentPage = 1;
+      },
+      methodClicked: function(e) {
+        console.log("Method Clicked: " + e.detail.name);
+        this.methodId = e.detail.name;
+        this.goToPage();
+      },
+      ready: function() {
+        var hash = location.hash.substr(1);
+        if (hash === "new") {
+          this.editMethod({'detail' : {'action': 'add'}});
+        } else if (hash !== "" && hash !== "home") {
+          this.methodId = hash;
+          this.goToPage();
+        }
+      },
+    });
+  </script>
+</dom-module>
