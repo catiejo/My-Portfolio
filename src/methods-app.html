@@ -75,10 +75,10 @@
         --paper-fab-keyboard-focus-background: var(--gkl-blue);
       }
       paper-icon-button.logo {
-        cursor: default;
+        /*cursor: default;*/
         height: auto;
-        top: 22px;
-        width: 130px;
+        /*top: 22px;*/
+        width: 50px;
       }
       paper-scroll-header-panel {
         height: 100%;
@@ -126,7 +126,9 @@
     </style>
     <paper-scroll-header-panel>
       <paper-toolbar class="page-header">
-        <!-- <paper-icon-button noink class="logo" src="/assets/GKL.png"></paper-icon-button> -->
+        <a href="https://www.linkedin.com/in/catiejo" target="_blank">
+          <paper-icon-button class="logo" src="/assets/linkedin.png"></paper-icon-button>
+        </a>
         <div class="spacer"></div>
         <div class="page-title">Portflio</div>
         <div class="spacer"></div>
@@ -138,13 +140,11 @@
         <div class="toggle-label">Sandbox</div> -->
       </paper-toolbar>
       <paper-toolbar class="method-filters">
-        <div class="spacer"></div>
         <paper-tabs selected="{{tabSelected}}" noink>
           <paper-tab>All</paper-tab>
           <paper-tab>Code</paper-tab>
           <paper-tab>Design</paper-tab>
         </paper-tabs>
-        <div class="spacer"></div>
       </paper-toolbar>
       <!-- Query the Database (methods are saved to 'cards' variable in Polymer) -->
       <firebase-query
