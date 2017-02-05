@@ -12,6 +12,7 @@
 <link rel="import" href="../bower_components/polymerfire/polymerfire.html">
 <link rel="import" href="method-card.html">
 <link rel="import" href="theme.html">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barrio|Open+Sans">
 
 <dom-module id="methods-app">
   <template>
@@ -36,23 +37,34 @@
         padding-top: 50px;
       }
       .method-filters {
-        background-color: var(--gkl-opaque-gray-5);
+        background-color: var(--background-color);
+        border-bottom: thick solid var(--secondary);
+        /*height: 110px;*/
       }
       .page-header {
         background-color: var(--background-color);
-        height: 100px;
+        height: 250px;
         overflow: visible;
       }
       .page-title {
-        color: white;
-        font-family: 'futura-pt', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: var(--pop);
+        font-family: 'Barrio', cursive;
         font-size: 48px;
-        font-weight: 600;
-        left: 50%;
-        padding-top: 50px;
-        position: absolute;
-        top: 50%;
-        transform: translate(-50%, -50%);
+        /*left: 50%;*/
+        /*padding-top: 50px;*/
+        /*position: absolute;*/
+        /*top: 50%;*/
+        /*transform: translate(-50%, -50%);*/
+      }
+      .page-subtitle {
+        color: var(--secondary);
+        font-family: 'Open Sans', sans-serif;
+        font-size: 24px;
+        /*left: 50%;*/
+        /*padding-top: 50px;*/
+        /*position: absolute;*/
+        /*top: 50%;*/
+        /*transform: translate(-50%, -50%);*/
       }
       paper-fab {
         position: fixed;
@@ -72,10 +84,16 @@
         height: 100%;
       }
       paper-tabs {
-        --paper-tabs-selection-bar-color: var(--gkl-blue);
-        --paper-tabs-selection-bar: { height: 4px; };
-        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        --paper-tabs-selection-bar-color: var(--pop);
+        /*--paper-tabs-selection-bar: { height: 4px; };*/
+        font-family: 'Open Sans', sans-serif;
         font-size: 18px;
+      }
+      paper-tab {
+        background-color: var(--light-gray);
+      }
+      paper-tab.iron-selected {
+        background-color: var(--pop);
       }
       paper-toggle-button {
         --paper-toggle-button-checked-bar: {
@@ -110,7 +128,9 @@
       <paper-toolbar class="page-header">
         <!-- <paper-icon-button noink class="logo" src="/assets/GKL.png"></paper-icon-button> -->
         <div class="spacer"></div>
-        <div class="page-title">METHODS</div>
+        <div class="page-title">Portflio</div>
+        <div class="spacer"></div>
+        <div class="page-subtitle">Catie Jo Pidel</div>
         <div class="spacer"></div>
         <!-- Sandbox/Production Toggle -->
         <!-- <div class="toggle-label">Production</div>
@@ -120,10 +140,9 @@
       <paper-toolbar class="method-filters">
         <div class="spacer"></div>
         <paper-tabs selected="{{tabSelected}}" noink>
-          <paper-tab>Get Smart</paper-tab>
-          <paper-tab>Collaborate to Solve</paper-tab>
-          <paper-tab>Sprint to Make</paper-tab>
           <paper-tab>All</paper-tab>
+          <paper-tab>Code</paper-tab>
+          <paper-tab>Design</paper-tab>
         </paper-tabs>
         <div class="spacer"></div>
       </paper-toolbar>
