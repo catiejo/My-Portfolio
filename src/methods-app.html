@@ -77,11 +77,12 @@
         --paper-fab-keyboard-focus-background: var(--gkl-blue);
       }
       paper-icon-button.glasses {
+        position: absolute;
         cursor: default;
         height: auto;
-        position: absolute;
-        right: 30%;
-        bottom: 0px;
+        right: 50%;
+        transform: translate(50%, 0%);
+        bottom: -4px;
         width: auto;
       }
       paper-icon-button.logo {
@@ -149,7 +150,7 @@
         -moz-transform: rotateX( 180deg );
         -o-transform: rotateX( 180deg );
         -webkit-transform: rotateX( 180deg );
-        transform: rotateX( 180deg );
+        transform: rotateX( 180deg ) translate(0px, -12px);
       }
       .text.flipped {
         -moz-transform: rotateX( -180deg );
@@ -159,15 +160,15 @@
       }
     </style>
     <paper-scroll-header-panel on-content-scroll="_scrollHandler">
-      <paper-toolbar class="page-header">
+      <paper-toolbar class="tall page-header">
         <a href="https://www.linkedin.com/in/catiejo" target="_blank">
-          <paper-icon-button class="logo" src="/assets/linkedin.png"></paper-icon-button>
+          <paper-icon-button class="top logo" src="/assets/linkedin.png"></paper-icon-button>
         </a>
-        <div class="spacer"></div>
-        <div class="page-title">Portflio</div>
-        <div class="spacer"></div>
-        <div class="page-subtitle">Catie Jo Pidel</div>
-        <div class="spacer"></div>
+        <div class="middle spacer"></div>
+        <div class="middle page-title">Portflio</div>
+        <div class="middle spacer"></div>
+        <div class="middle page-subtitle">Catie Jo Pidel</div>
+        <div class="middle spacer"></div>
       </paper-toolbar>
       <paper-toolbar class="method-filters">
         <paper-tabs class = "flippable tab flipped" no-bar selected="{{tabSelected}}" noink>
@@ -291,9 +292,15 @@
       },
       _scrollHandler: function(e) {
         var scrollPosition = e.target._y;
+        var glasses = Polymer.dom(this.root).querySelector('.glasses');
+        var glassesPosition = this.clamp(((scrollPosition/250.0) * 100), 0, 50);
+        glasses.style.right = String(50 - glassesPosition) + "%";
         var state = scrollPosition < 250; //HACK: changes if header height changes!
         this.flipper(state);
         console.log(e.target._y);
+      },
+      clamp: function(num, min, max) {
+        return num <= min ? min : num >= max ? max : num;
       },
     });
   </script>
