@@ -11,6 +11,7 @@
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../bower_components/polymerfire/polymerfire.html">
 <link rel="import" href="method-card.html">
+<link rel="import" href="project-work.html">
 <link rel="import" href="theme.html">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barrio|Open+Sans">
 
@@ -191,7 +192,8 @@
             <div class="card-container">
               <!-- Production Methods -->
               <template is="dom-repeat" items="{{cards}}" filter="{{prodFilter(tabSelected)}}" sort="alphabetized">
-                  <method-card method-id="{{item.id}}" in-production="{{item.inProduction}}" logo="{{item.logo}}" name="{{item.name}}" slides="{{item.slideDeck}}"><marked-element markdown="[[item.whyItWorks]]"><div class="markdown-html"></div></marked-element></method-card>
+                <!-- <method-card method-id="{{item.id}}" in-production="{{item.inProduction}}" logo="{{item.logo}}" name="{{item.name}}" slides="{{item.slideDeck}}"><marked-element markdown="[[item.whyItWorks]]"><div class="markdown-html"></div></marked-element></method-card> -->
+                <project-work name="{{item.name}}"></method-card>
               </template>
             </div>
           </neon-animatable>

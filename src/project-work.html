@@ -1,0 +1,35 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="theme.html">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800">
+
+<dom-module id="project-work">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+        width: 100%;
+        background-color: var(--background-color);
+      }
+      :host ::content div {
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 800;
+        font-size: 48px;
+        color: var(--dark-gray);
+      }
+    </style>
+    <div>{{name}}</div>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'project-work',
+      properties: {
+        name: {
+          type: String,
+          value: 'A Method By Any Other Name...',
+        },
+      },
+    });
+  </script>
+</dom-module>
