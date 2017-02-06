@@ -186,27 +186,12 @@
       </firebase-query>
       <!-- paper-scroll-header-panel content -->
       <div class="content">
-        <!-- Sandbox/Production Page Controller -->
-        <neon-animated-pages selected="[[toggleSelected]]" entry-animation="[[screenEntryAnimation]]" exit-animation="[[screenExitAnimation]]">
-          <neon-animatable>
-            <div class="card-container">
-              <!-- Production Methods -->
-              <template is="dom-repeat" items="{{cards}}" filter="{{prodFilter(tabSelected)}}" sort="alphabetized">
-                <!-- <method-card method-id="{{item.id}}" in-production="{{item.inProduction}}" logo="{{item.logo}}" name="{{item.name}}" slides="{{item.slideDeck}}"><marked-element markdown="[[item.whyItWorks]]"><div class="markdown-html"></div></marked-element></method-card> -->
-                <project-work name="{{item.name}}"></method-card>
-              </template>
-            </div>
-          </neon-animatable>
-          <neon-animatable>
-            <div class="card-container">
-              <paper-fab on-click="addMethod" icon="add"></paper-fab>
-              <!-- Sandbox Methods -->
-              <template is="dom-repeat" items="{{cards}}" filter="{{sandboxFilter(tabSelected)}}" sort="alphabetized">
-                  <method-card method-id="{{item.id}}" in-production="{{item.inProduction}}" logo="{{item.logo}}" name="{{item.name}}" slides="{{item.slideDeck}}"><marked-element markdown="[[item.whyItWorks]]"><div class="markdown-html"></div></marked-element></method-card>
-              </template>
-            </div>
-          </neon-animatable>
-        </neon-animated-pages>
+        <div class="card-container">
+          <!-- Production Methods -->
+          <template is="dom-repeat" items="{{cards}}" filter="{{prodFilter(tabSelected)}}" sort="alphabetized">
+            <project-work name="{{item.name}}">{{item.why}}</method-card>
+          </template>
+        </div>
       </div>
       <!-- End content -->
     </paper-scroll-header-panel>

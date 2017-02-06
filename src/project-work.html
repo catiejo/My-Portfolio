@@ -7,18 +7,32 @@
   <template>
     <style>
       :host {
-        display: inline-block;
-        width: 100%;
+        display: block;
+        width: 1030px;
+        height: 370px;
         background-color: var(--background-color);
+        border: solid var(--pop);
       }
       :host ::content div {
         font-family: 'Open Sans', sans-serif;
+        color: var(--dark-gray);
+        font-weight: 400;
+        font-size: 20px;
+      }
+      .text {
+        position: relative;
+        left: 437px;
+        top: 14px;
+        width: 450px;
+        text-align: left;
+      }
+      #title {
         font-weight: 800;
         font-size: 48px;
-        color: var(--dark-gray);
       }
     </style>
-    <div>{{name}}</div>
+    <div class="text" id="title">{{name}}</div>
+    <div class="text"><content></content></div>
   </template>
 
   <script>
@@ -27,7 +41,11 @@
       properties: {
         name: {
           type: String,
-          value: 'A Method By Any Other Name...',
+          value: 'Portfolio Piece',
+        },
+        description: {
+          type: String,
+          value: 'This is a description.',
         },
       },
     });
