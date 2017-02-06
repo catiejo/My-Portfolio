@@ -1,5 +1,4 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
-<link rel="import" href="/bower_components/app-layout/demo/sample-content.html">
 <link rel="import" href="../bower_components/marked-element/marked-element.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animatable.html">
 <link rel="import" href="../bower_components/neon-animation/neon-animated-pages.html">
@@ -11,7 +10,6 @@
 <link rel="import" href="../bower_components/paper-toggle-button/paper-toggle-button.html">
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../bower_components/polymerfire/polymerfire.html">
-<link rel="import" href="../bower_components/iron-scroll-target-behavior/iron-scroll-target-behavior.html"
 <link rel="import" href="method-card.html">
 <link rel="import" href="theme.html">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barrio|Open+Sans">
@@ -192,12 +190,9 @@
           <neon-animatable>
             <div class="card-container">
               <!-- Production Methods -->
-              <div class="content">
-                <sample-content size="100"></sample-content>
-              </div>
-              <!-- <template is="dom-repeat" items="{{cards}}" filter="{{prodFilter(tabSelected)}}" sort="alphabetized">
+              <template is="dom-repeat" items="{{cards}}" filter="{{prodFilter(tabSelected)}}" sort="alphabetized">
                   <method-card method-id="{{item.id}}" in-production="{{item.inProduction}}" logo="{{item.logo}}" name="{{item.name}}" slides="{{item.slideDeck}}"><marked-element markdown="[[item.whyItWorks]]"><div class="markdown-html"></div></marked-element></method-card>
-              </template> -->
+              </template>
             </div>
           </neon-animatable>
           <neon-animatable>
