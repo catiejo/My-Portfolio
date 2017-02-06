@@ -157,7 +157,7 @@
         transform: rotateX( -180deg );
       }
     </style>
-    <paper-scroll-header-panel>
+    <paper-scroll-header-panel on-content-scroll="_scrollHandler">
       <paper-toolbar class="page-header">
         <a href="https://www.linkedin.com/in/catiejo" target="_blank">
           <paper-icon-button class="logo" src="/assets/linkedin.png"></paper-icon-button>
@@ -169,12 +169,12 @@
         <div class="spacer"></div>
       </paper-toolbar>
       <paper-toolbar class="method-filters">
-        <paper-tabs class = "flippable tab" no-bar selected="{{tabSelected}}" noink>
-          <paper-tab><span class="flippable text">All<span></paper-tab>
-          <paper-tab><span class="flippable text">Code<span></paper-tab>
-          <paper-tab><span class="flippable text">Design<span></paper-tab>
+        <paper-tabs class = "flippable tab flipped" no-bar selected="{{tabSelected}}" noink>
+          <paper-tab><span class="flippable text flipped">All<span></paper-tab>
+          <paper-tab><span class="flippable text flipped">Code<span></paper-tab>
+          <paper-tab><span class="flippable text flipped">Design<span></paper-tab>
         </paper-tabs>
-        <paper-icon-button noink on-click="flipper" class="glasses" src="/assets/glasses.png"></paper-icon-button>
+        <paper-icon-button noink class="glasses" src="/assets/glasses.png"></paper-icon-button>
       </paper-toolbar>
       <!-- Query the Database (methods are saved to 'cards' variable in Polymer) -->
       <firebase-query
@@ -279,15 +279,19 @@
           return function (item) { return ((item.stage.indexOf('smart') != -1) || (item.stage.indexOf('collab') !== -1) || (item.stage.indexOf('sprint') !== -1)) && !item.inProduction; }
         }
       },
-      flipper: function (e) {
+      flipper: function () {
         var flippables = Polymer.dom(this.root).querySelectorAll('.flippable');
         flippables.forEach (function(f) {
           f.classList.toggle('flipped');
         });
       },
       _scrollHandler: function(e) {
-        console.log("scroll!");
-      }
+        var scrollPosition = e.target._y;
+        if (scrollPosition == 249) {
+          this.flipper();
+        }
+        console.log(e.target._y);
+      },
     });
   </script>
 </dom-module>
