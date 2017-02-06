@@ -280,17 +280,19 @@
           return function (item) { return ((item.stage.indexOf('smart') != -1) || (item.stage.indexOf('collab') !== -1) || (item.stage.indexOf('sprint') !== -1)) && !item.inProduction; }
         }
       },
-      flipper: function () {
+      flipper: function (state) {
         var flippables = Polymer.dom(this.root).querySelectorAll('.flippable');
         flippables.forEach (function(f) {
+          if (state && f.classList.contains('flipped') || !state && !f.classList.contains('flipped')) {
+            return;
+          }
           f.classList.toggle('flipped');
         });
       },
       _scrollHandler: function(e) {
         var scrollPosition = e.target._y;
-        if (scrollPosition == 249) {
-          this.flipper();
-        }
+        var state = scrollPosition < 250; //HACK: changes if header height changes!
+        this.flipper(state);
         console.log(e.target._y);
       },
     });
