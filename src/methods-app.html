@@ -82,7 +82,7 @@
         right: 50%;
         transform: translate(50%, 0%);
         bottom: -4px;
-        width: auto;
+        width: 526px;
       }
       paper-icon-button.logo {
         height: auto;
@@ -164,7 +164,7 @@
           <paper-icon-button class="top logo" src="/assets/linkedin.png"></paper-icon-button>
         </a>
         <div class="middle spacer"></div>
-        <div class="middle page-title">Portflio</div>
+        <div class="middle page-title">Portfolio</div>
         <div class="middle spacer"></div>
         <div class="middle page-subtitle">Catie Jo Pidel</div>
         <div class="middle spacer"></div>
@@ -189,7 +189,7 @@
         <div class="card-container">
           <!-- Production Methods -->
           <template is="dom-repeat" items="{{cards}}" filter="{{prodFilter(tabSelected)}}" sort="alphabetized">
-            <project-work name="{{item.name}}">{{item.why}}</method-card>
+            <project-work name="{{item.name}}">This is a description. It has words in it, and those words are pretty cool if you ask me. They describe stuff</method-card>
           </template>
         </div>
       </div>
@@ -273,16 +273,27 @@
         });
       },
       _scrollHandler: function(e) {
-        var scrollPosition = e.target._y;
-        var glasses = Polymer.dom(this.root).querySelector('.glasses');
-        var glassesPosition = this.clamp(((scrollPosition/250.0) * 100), 0, 50);
-        glasses.style.right = String(50 - glassesPosition) + "%";
-        var state = scrollPosition < 250; //HACK: changes if header height changes!
-        this.flipper(state);
         console.log(e.target._y);
-      },
-      clamp: function(num, min, max) {
-        return num <= min ? min : num >= max ? max : num;
+        var scrollPosition = e.target._y;
+        var ratio = scrollPosition/250.0;
+
+        /***Calculating amount to move the image***/
+        //When ratio is 1, right is 0% and translate is 0%
+        //When ratio is 0, right is 50% and translate is 50%
+        var translationAmount = 50.0 - (ratio * 50.0);
+
+        /***Calculating amount to scale the image***/
+        //When ratio is 1, the width should be one half normal
+        //When ratio is 0, the width should be normal
+        var scaleAmount = (1.0 - (ratio/2.0)) * 526.0;
+
+        //Update style accordingly
+        var glasses = Polymer.dom(this.root).querySelector('.glasses');
+        glasses.style.right = String(translationAmount) + "%";
+        glasses.style.transform = "translate(" + String(translationAmount) + "%, 0%)";
+        glasses.style.width = String(scaleAmount) + "px";
+
+        this.flipper(ratio == 0);
       },
     });
   </script>
