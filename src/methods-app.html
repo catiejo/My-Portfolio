@@ -11,6 +11,7 @@
 <link rel="import" href="../bower_components/paper-toggle-button/paper-toggle-button.html">
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../bower_components/polymerfire/polymerfire.html">
+<link rel="import" href="../bower_components/iron-scroll-target-behavior/iron-scroll-target-behavior.html"
 <link rel="import" href="method-card.html">
 <link rel="import" href="theme.html">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Barrio|Open+Sans">
@@ -284,6 +285,9 @@
           f.classList.toggle('flipped');
         });
       },
+      _scrollHandler: function(e) {
+        console.log("scroll!");
+      }
     });
   </script>
 </dom-module>
