@@ -27,7 +27,7 @@
         position: absolute;
         left: 32px;
         top: 28px;
-        background-color: var(--secondary);
+        /*background-color: var(--secondary);*/
       }
       .text {
         position: relative;
@@ -46,8 +46,40 @@
         height: auto;
         width: 60px;
       }
+      #img1 {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 200px;
+        height: 200px;
+      }
+      #img2 {
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 200px;
+        height: 90px;
+      }
+      #img3 {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 145px;
+        height: 145px;
+      }
+      #img4 {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        width: 145px;
+        height: 145px;
+      }
     </style>
     <div class="images">
+      <img src="{{img1}}" id ="img1">
+      <img src="{{img2}}" id ="img2">
+      <img src="{{img3}}" id ="img3">
+      <img src="{{img4}}" id ="img4">
     </div>
     <div class="text">
       <div id="title">{{name}}</div>
@@ -63,6 +95,22 @@
         name: {
           type: String,
           value: 'Portfolio Piece',
+        },
+        img1: {
+          type: String,
+          value: '/assets/linkedin.png',
+        },
+        img2: {
+          type: String,
+          value: '/assets/linkedin.png',
+        },
+        img3: {
+          type: String,
+          value: '/assets/linkedin.png',
+        },
+        img4: {
+          type: String,
+          value: '/assets/linkedin.png',
         },
       },
     });
