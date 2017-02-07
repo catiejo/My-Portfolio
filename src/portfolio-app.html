@@ -16,19 +16,20 @@
         background-color: var(--background-color);
         display: inline-block;
       }
-      .portfolio-container {
-        display: inline-block;
-        height: 100%;
-        max-width: 90%;
-      }
       .content {
         padding-top: 70px;
         text-align: center; /*Centers text AND content*/
       }
-      .portfolio-filters {
-        background-color: var(--background-color);
-        border-bottom: thick solid var(--secondary);
-        /*height: 110px;*/
+      .flippable {
+        -moz-transform-style: preserve-3d;
+        -moz-transition: -moz-transform 1s;
+        -o-transform-style: preserve-3d;
+        -o-transition: -o-transform 1s;
+        -webkit-transform-origin: 50% 50%;
+        -webkit-transform-style: preserve-3d;
+        -webkit-transition: -webkit-transform 1s;
+        transform-style: preserve-3d;
+        transition: transform 1s;
       }
       .page-header {
         background-color: var(--background-color);
@@ -61,46 +62,47 @@
       paper-scroll-header-panel {
         height: 100%;
       }
-      paper-tabs {
-        font-family: 'Open Sans', sans-serif;
-        font-size: 18px;
-      }
       /*http://stackoverflow.com/questions/31582380/polymer-1-0-paper-tab-stylization*/
       paper-tab {
+        width: 100px;
+        height: 35px;
         background-color: var(--light-gray);
         margin-left: 5px;
       }
       paper-tab.iron-selected {
         background-color: var(--pop);
       }
-      .spacer {
-        @apply(--layout-flex);
+      paper-tabs {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 18px;
       }
-      .flippable {
-        -moz-transform-style: preserve-3d;
-        -moz-transition: -moz-transform 1s;
-        -o-transform-style: preserve-3d;
-        -o-transition: -o-transform 1s;
-        -webkit-transform-origin: 50% 50%;
-        -webkit-transform-style: preserve-3d;
-        -webkit-transition: -webkit-transform 1s;
-        transform-style: preserve-3d;
-        transition: transform 1s;
+      .portfolio-container {
+        display: inline-block;
+        height: 100%;
+        max-width: 90%;
+      }
+      .portfolio-filters {
+        background-color: var(--background-color);
+        border-bottom: thick solid var(--secondary);
       }
       .tab {
         transform-origin: bottom;
+        margin-bottom: -5px;
       }
       .tab.flipped {
         -moz-transform: rotateX( 180deg );
         -o-transform: rotateX( 180deg );
         -webkit-transform: rotateX( 180deg );
-        transform: rotateX( 180deg ) translate(0px, -12px);
+        transform: rotateX( 180deg ) translate(0px, -5px);
       }
       .text.flipped {
         -moz-transform: rotateX( -180deg );
         -o-transform: rotateX( -180deg );
         -webkit-transform: rotateX( -180deg );
         transform: rotateX( -180deg );
+      }
+      .spacer {
+        @apply(--layout-flex);
       }
     </style>
     <paper-scroll-header-panel on-content-scroll="_scrollHandler">
@@ -151,7 +153,7 @@
         },
         tabSelected: {
           type: Number,
-          value: 3, // All
+          value: 0, // All
         },
       },
       alphabetized: function (firstItem, secondItem) {
@@ -183,7 +185,7 @@
         console.log(e.target._y);
         var scrollPosition = e.target._y;
         var ratio = scrollPosition/250.0;
-        this.flipper(ratio == 0); //Flip tabs if scrolled to top
+        this.flipper(ratio < 0.4); //Flip tabs if scrolled to top
 
         /***Calculating amount to move the image***/
         //When ratio is 1, right is 0% and translate is 0%
