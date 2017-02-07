@@ -52,7 +52,7 @@
         height: auto;
         right: 50%;
         transform: translate(50%, 0%);
-        bottom: -4px;
+        bottom: -8px;
         width: 526px;
       }
       paper-icon-button.linkedin {
@@ -85,10 +85,11 @@
       .portfolio-filters {
         background-color: var(--background-color);
         border-bottom: thick solid var(--secondary);
+        height: 100px;
       }
       .tab {
         transform-origin: bottom;
-        margin-bottom: -15px;
+        margin-bottom: -25px;
       }
       .tab.flipped {
         -moz-transform: rotateX( 180deg );
@@ -117,13 +118,13 @@
         <div class="middle page-subtitle">Catie Jo Pidel</div>
         <div class="middle spacer"></div>
       </paper-toolbar>
-      <paper-toolbar class="portfolio-filters">
-        <paper-tabs class = "flippable tab flipped" no-bar selected="{{tabSelected}}" noink>
+      <paper-toolbar class="tall portfolio-filters">
+        <paper-tabs class = "bottom flippable tab flipped" no-bar selected="{{tabSelected}}" noink>
           <paper-tab><span class="flippable text flipped">All<span></paper-tab>
           <paper-tab><span class="flippable text flipped">Code<span></paper-tab>
           <paper-tab><span class="flippable text flipped">Design<span></paper-tab>
         </paper-tabs>
-        <paper-icon-button noink class="glasses" src="/assets/glasses.png"></paper-icon-button>
+        <paper-icon-button noink class="bottom glasses" src="/assets/glasses.png"></paper-icon-button>
       </paper-toolbar>
       <!-- Query the Database (methods are saved to 'projects' variable in Polymer) -->
       <firebase-query
