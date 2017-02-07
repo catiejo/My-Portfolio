@@ -113,13 +113,9 @@
       },
       ready: function() {
         var topLeft = Polymer.dom(this.root).querySelector('.top.left');
-        console.log(topLeft);
         var bottomLeft = Polymer.dom(this.root).querySelector('.bottom.left');
-        console.log(bottomLeft);
         var topRight = Polymer.dom(this.root).querySelector('.top.right');
-        console.log(topRight);
         var bottomRight = Polymer.dom(this.root).querySelector('.bottom.right');
-        console.log(bottomRight);
 
         if (!this.img4) {
           if (!this.img3) {
@@ -136,7 +132,8 @@
           } else {
             bottomLeft.parentNode.removeChild(bottomLeft);
             topLeft.style.height = "100%";
-            this.img4 = this.img2;
+            bottomRight.src = this.img2;
+            // this.img4 = this.img2; //FIXME: why doesn't this work?
           }
         }
       }
