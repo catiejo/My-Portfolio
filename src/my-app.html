@@ -6,13 +6,13 @@
 <link rel="import" href="../bower_components/paper-styles/color.html">
 <link rel="import" href="../bower_components/paper-styles/typography.html">
 <link rel="import" href="edit-method-page.html">
-<link rel="import" href="methods-app.html">
+<link rel="import" href="portfolio-app.html">
 <link rel="import" href="method-page.html">
 
 <dom-module id="my-app">
   <template>
     <style is="custom-style">
-      methods-app, method-page {
+      portfolio-app, method-page {
         height: 100%;
         width: 100%;
       }
@@ -22,17 +22,17 @@
       }
     </style>
     <!-- Database Declaration -->
-    <firebase-app 
+    <firebase-app
       name="methods"
-      auth-domain="gkl-methods.firebaseapp.com" 
-      database-url="https://gkl-methods.firebaseio.com/" 
+      auth-domain="gkl-methods.firebaseapp.com"
+      database-url="https://gkl-methods.firebaseio.com/"
       api-key="AIzaSyA2IcaKsboeYiUMilM4FxU4-PA6fAnSLNo">
     </firebase-app>
     <firebase-auth id="auth" app-name="methods">
     </firebase-auth>
     <!-- Page Controller -->
     <neon-animated-pages selected="[[currentPage]]" entry-animation="[[screenEntryAnimation]]" exit-animation="[[screenExitAnimation]]">
-      <neon-animatable><methods-app on-add-method='editMethod' on-method-clicked='methodClicked'></methods-app></neon-animatable>
+      <neon-animatable><portfolio-app on-add-method='editMethod' on-method-clicked='methodClicked'></portfolio-app></neon-animatable>
       <neon-animatable><method-page on-edit-method='editMethod' on-go-back='goHome' method-id="{{methodId}}"></method-page></neon-animatable>
       <neon-animatable><edit-method-page method-id="{{methodId}}" on-method-clicked='methodClicked' on-go-back='cancelChanges'></edit-method-page></neon-animatable>
     </neon-animated-pages>
@@ -43,7 +43,7 @@
       properties: {
         currentPage: {
           type: Number,
-          value: 0, 
+          value: 0,
         },
         methodId: {
           type: String,
