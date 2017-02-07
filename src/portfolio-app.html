@@ -36,15 +36,20 @@
         height: 250px;
         overflow: visible;
       }
+      .words {
+        width: 520px;
+      }
       .page-title {
         color: var(--pop);
         font-family: 'Barrio', cursive;
         font-size: 48px;
+        float: left;
       }
       .page-subtitle {
         color: var(--secondary);
         font-family: 'Open Sans', sans-serif;
         font-size: 24px;
+        float: right;
       }
       paper-icon-button.glasses {
         position: absolute;
@@ -113,9 +118,10 @@
           <paper-icon-button class="top linkedin" src="/assets/linkedin.png"></paper-icon-button>
         </a>
         <div class="middle spacer"></div>
-        <div class="middle page-title">Portfolio</div>
-        <div class="middle spacer"></div>
-        <div class="middle page-subtitle">Catie Jo Pidel</div>
+        <div class="middle words">
+          <div class="page-title">Portfolio</div>
+          <div class="page-subtitle">Catie Jo Pidel</div>
+        </div>
         <div class="middle spacer"></div>
       </paper-toolbar>
       <paper-toolbar class="tall portfolio-filters">
