@@ -27,7 +27,6 @@
         position: absolute;
         left: 32px;
         top: 28px;
-        /*background-color: var(--secondary);*/
       }
       .text {
         position: relative;
@@ -46,40 +45,32 @@
         height: auto;
         width: 60px;
       }
-      #img1 {
+      img {
         position: absolute;
+      }
+      .top {
         top: 0px;
-        left: 0px;
-        width: 200px;
-        height: 200px;
+        height: 65.6%;
       }
-      #img2 {
-        position: absolute;
+      .bottom {
         bottom: 0px;
+        height: 29.5%;
+      }
+      .left {
         left: 0px;
-        width: 200px;
-        height: 90px;
+        width: 55.5%;
       }
-      #img3 {
-        position: absolute;
-        top: 0px;
+      .right {
         right: 0px;
-        width: 145px;
-        height: 145px;
-      }
-      #img4 {
-        position: absolute;
-        bottom: 0px;
-        right: 0px;
-        width: 145px;
-        height: 145px;
+        width: 40%;
+        height: 47.5% !important;
       }
     </style>
     <div class="images">
-      <img src="{{img1}}" id ="img1">
-      <img src="{{img2}}" id ="img2">
-      <img src="{{img3}}" id ="img3">
-      <img src="{{img4}}" id ="img4">
+      <img src="{{img1}}" class ="top left">
+      <img src="{{img2}}" class ="bottom left">
+      <img src="{{img3}}" class ="top right">
+      <img src="{{img4}}" class ="bottom right">
     </div>
     <div class="text">
       <div id="title">{{name}}</div>
@@ -102,17 +93,46 @@
         },
         img2: {
           type: String,
-          value: '/assets/linkedin.png',
+          value: '',
         },
         img3: {
           type: String,
-          value: '/assets/linkedin.png',
+          value: '',
         },
         img4: {
           type: String,
-          value: '/assets/linkedin.png',
+          value: '',
         },
       },
+      ready: function() {
+        var topLeft = Polymer.dom(this.root).querySelector('.top.left');
+        console.log(topLeft);
+        var bottomLeft = Polymer.dom(this.root).querySelector('.bottom.left');
+        console.log(bottomLeft);
+        var topRight = Polymer.dom(this.root).querySelector('.top.right');
+        console.log(topRight);
+        var bottomRight = Polymer.dom(this.root).querySelector('.bottom.right');
+        console.log(bottomRight);
+
+        if (!this.img4) {
+          if (!this.img3) {
+            topRight.parentNode.removeChild(topRight);
+            bottomRight.parentNode.removeChild(bottomRight);
+            if (!this.img2) {
+              bottomLeft.parentNode.removeChild(bottomLeft);
+              topLeft.style.width = "100%";
+              topLeft.style.height = "100%";
+            } else {
+              topLeft.style.width = "100%";
+              bottomLeft.style.width = "100%";
+            }
+          } else {
+            bottomLeft.parentNode.removeChild(bottomLeft);
+            topLeft.style.height = "100%";
+            this.img4 = this.img2;
+          }
+        }
+      }
     });
   </script>
 </dom-module>
