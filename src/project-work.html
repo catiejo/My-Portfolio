@@ -15,6 +15,9 @@
         background-color: var(--background-color);
         border: solid var(--pop);
       }
+      :host:hover img {
+        filter: grayscale(0%);
+      }
       :host ::content div {
         font-family: 'Open Sans', sans-serif;
         color: var(--dark-gray);
@@ -47,6 +50,7 @@
       }
       img {
         position: absolute;
+        filter: grayscale(100%);
       }
       .top {
         top: 0px;
