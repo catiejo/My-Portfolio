@@ -138,16 +138,16 @@
       <!-- Query the Database (methods are saved to 'projects' variable in Polymer) -->
       <firebase-query
         id="query"
-        app-name="methods"
-        path="/methods"
+        app-name="portfolio"
+        path="/projects"
         data="{{projects}}">
       </firebase-query>
       <!-- paper-scroll-header-panel content -->
       <div class="content">
         <div class="portfolio-container">
           <!-- Production Methods -->
-          <template is="dom-repeat" items="{{projects}}" filter="{{filter(tabSelected)}}" sort="alphabetized">
-            <project-work name="{{item.name}}">This is a description. It has words in it, and those words are pretty cool if you ask me. They describe stuff</method-card>
+          <template is="dom-repeat" items="{{projects}}" filter="{{filter(tabSelected)}}">
+            <project-work name="{{item.name}}" img1="{{item.img1}}" img2="{{item.img2}}" img3="{{item.img3}}" img4="{{item.img4}}">This is a description. It has words in it, and those words are pretty cool if you ask me. They describe stuff</method-card>
           </template>
         </div>
       </div>
@@ -174,13 +174,13 @@
       },
       filter: function () {
         if (this.tabSelected == 0) { //All
-          return function (item) { return ((item.stage.indexOf('smart') != -1) || (item.stage.indexOf('collab') !== -1) || (item.stage.indexOf('sprint') !== -1)) && item.inProduction; }
+          return function (item) { return ((item.category.indexOf('code') != -1) || (item.category.indexOf('design') !== -1)) }
         }
         else if (this.tabSelected == 1) { //Code
-          return function (item) { return (item.stage.indexOf('collab') !== -1) && item.inProduction; }
+          return function (item) { return (item.category.indexOf('code') !== -1) }
         }
         else if (this.tabSelected == 2) { //Design
-          return function (item) { return (item.stage.indexOf('sprint') !== -1) && item.inProduction; }
+          return function (item) { return (item.category.indexOf('design') !== -1) }
         }
       },
       flipper: function (state) {

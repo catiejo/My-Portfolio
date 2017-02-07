@@ -1,0 +1,20 @@
+{
+  "projects" : {
+    "Symphamis" : {
+      "name" : "Symphamis",
+      "category" : [ "code" ],
+      "img1" : "assets/Symphamis/forest.png",
+      "img2" : "assets/Symphamis/landscape.png",
+      "img3" : "assets/Symphamis/fork.png",
+      "img4" : "assets/Symphamis/desert.png"
+    },
+    "Baobab" : {
+      "name" : "Baobab",
+      "category" : [ "code", "design" ],
+      "img1" : "assets/Symphamis/forest.png",
+      "img2" : "assets/Symphamis/landscape.png",
+      "img3" : "assets/Symphamis/fork.png",
+      "img4" : "assets/Symphamis/desert.png"
+    }
+  }
+}
