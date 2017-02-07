@@ -3,18 +3,26 @@
     "Symphamis" : {
       "name" : "Symphamis",
       "category" : [ "code" ],
+      "description" : "Project for the Global Game Jam 2017. The theme was waves. Our game incorporates the ritual of greeting ('waving' hello) to invite friends to follow along the trail, each influencing the game soundtrack being played.",
       "img1" : "assets/Symphamis/forest.png",
       "img2" : "assets/Symphamis/landscape.png",
       "img3" : "assets/Symphamis/fork.png",
       "img4" : "assets/Symphamis/desert.png"
     },
+    "MusiCollab" : {
+      "name" : "MusiCollab",
+      "category" : [ "code" ],
+      "description" : "A shapeshifting tone matrix developed at the University of Minnesota.",
+      "img1" : "assets/MusiCollab/prototype.png",
+      "img2" : "assets/MusiCollab/soundboard.png"
+    },
     "Baobab" : {
       "name" : "Baobab",
       "category" : [ "code", "design" ],
-      "img1" : "assets/Symphamis/forest.png",
-      "img2" : "assets/Symphamis/landscape.png",
-      "img3" : "assets/Symphamis/fork.png",
-      "img4" : "assets/Symphamis/desert.png"
+      "description" : "Un petit jeu fondé sur Le Petit Prince. Fais tourner la planète en glissant ton doigt sur l'écran. Touche les baobabs pour les arracher avant qu'ils grandissent. Le jeu se termine quand 5 baobabs ont grandi.",
+      "img1" : "assets/Baobab/rules.png",
+      "img2" : "assets/Baobab/after.png",
+      "img3" : "assets/Baobab/before.png"
     }
   }
 }
