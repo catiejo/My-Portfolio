@@ -1,7 +1,9 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="theme.html">
+<link rel="import" href="../assets/Icons/custom-icons.html">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800">
 
 <dom-module id="project-work">
@@ -23,6 +25,16 @@
         color: var(--dark-gray);
         font-weight: 400;
         font-size: 20px;
+      }
+      paper-icon-button {
+        --paper-icon-button: {
+          width: 50px;
+          height: auto;
+          color: var(--dark-gray);
+          background-color: var(--dark-gray);
+        };
+
+        display: inline-flex;
       }
       .images {
         width: 360px;
@@ -79,8 +91,14 @@
     <div class="text">
       <div id="title">{{name}}</div>
       <div><content></content></div>
+      <div>
+        <!-- <a href="https://www.polymer-project.org" tabindex="-1"> -->
+          <paper-icon-button class="button" icon="info"></paper-icon-button>
+        <!-- </a> -->
+        <paper-icon-button class="button" icon="custom-icons:github"></paper-icon-button>
+        <paper-icon-button class="button" src="/assets/github.png"></paper-icon-button>
+      </div>
     </div>
-    <!-- <paper-icon-button id="arrow" icon="arrow-forward"></paper-icon-button> -->
   </template>
 
   <script>
